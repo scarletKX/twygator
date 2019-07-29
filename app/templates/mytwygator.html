@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+	<p>You have logged in! Now you can view timeline aggregator of all friends, or you could choose to view that of certain lists that you're subscribed to!</p>
+	<!-- url of the view for all friends -->
+	<a href="{{ url_for('mytwygator_view', list_name = 'all-friends', list_id = -1) }}">All Friends</a>
+	<br><br>
+	<p>Your subscribed Lists:</p>
+	<ul>
+		{% for tmp_list in my_lists %}
+		<!-- url of the view for a single list -->
+		<li><a href="{{ url_for('mytwygator_view', list_name = tmp_list.name, list_id = tmp_list.id) }}">{{ tmp_list.name }}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+
+{% endblock %}

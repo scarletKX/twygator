@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    {% for name, screen_name, status_ids, status_texts in f_timelines %} 
+      {% if (loop.index % 3 == 1) and
+            (loop.index) > 1 %}
+        </div>
+        <br>
+      {% endif %}
+      {% if loop.index % 3 == 1 %}
+        <div class="row">
+      {% endif %}
+          <div class="col-sm-4">
+            <h3><a href="https://twitter.com/{{ screen_name }}">{{ name }}</a></h3>
+            <h5>@{{ screen_name }}</h5>
+            {% for idx in range(5) %}
+            <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" align="left"><a href="https://twitter.com/{{ screen_name }}/status/{{ status_ids[idx] }}" data-toggle="popover" data-placement="top" data-content="{{ status_texts[idx] }}" data-trigger="hover">{{ status_texts[idx] }}</a></p>
+            {% endfor %}
+          </div>
+    {% endfor %}
+  </div>
+</div>
+  {{ pagination.info}}
+  {{ pagination.links }}
+  <script>
+  $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+  });
+  </script>
+{% endblock %}
+<!-- 
+href="https://twitter.com/{{ screen_name }}/status/{{ status_ids[idx] }}"
+{{ status_texts[idx] }} -->
+

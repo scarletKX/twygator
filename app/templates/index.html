@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Wekcome to Twygator!</h2>
+<p>Twygator aggregates 5 most recent statuses from each of your friends and present it to you so that you can keep yourself up-to-date with your friends' timelines in a few glances!</p>
+{% if session['logged_in'] %}
+	<hr>
+	<p>Check<a href="{{ url_for('mytwygator_option') }}"> Your Twygator </a>out to see you personalized friends' timeline aggregator!</p>
+{% else %}
+
+	<a href="{{ url_for('authen') }}"><img src="{{ url_for('static', filename = 'image/twitter_sign_in.png') }}" title="Sign in with Twitter" alt="Sign in with Twitter">Sign in to use your Twygator!</a>
+{% endif %}
+
+{% endblock %}
+
