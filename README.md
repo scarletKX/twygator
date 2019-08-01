@@ -5,6 +5,7 @@ To use twygator locally:
 
 1. Download all files however you want into your computer.
 2. In the outmost level, same as README.md, create a "config.py" file, and Copy the following:
+
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -15,6 +16,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 3. Open Command Prompt and navigate to the location of the folder.
 4. enter "flask run".
 5. Open your browser and enter the local url assigned.
