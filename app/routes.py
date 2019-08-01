@@ -18,10 +18,7 @@ from app.util import get_friend_timeline
 # DBSession = sessionmaker(bind=engine)
 # db_session = DBSession()
 
-consumer_key = 'kd8Mq1XlxRnjMH4xdWxReBXKm'
-consumer_secret = 'oBmGcMYkkYC4Cs45Bam3Uf0qTSaBi7KnC7DPAKKDIJMP6VgOVi'
-#access_token = '897868147033874432-2SxfYZtr8q5lY7omNtOVXpwxAjSXyA9'
-#access_token_secret = 'BI8H1V5Kqj41SkWDF0DsPLMcoGQMUoK7naogG0RIYkxUF'
+
 callback = 'http://127.0.0.1:5000/callback'
 
 @app.route('/')
@@ -42,7 +39,7 @@ def twitter_callback():
 	request_token = session['request_token']
 	del session['request_token']
 
-	auth = tweepy.OAuthHandler(consumer_key, consumer_secret, callback)
+	auth = tweepy.OAuthHandler(app.config['CONSUMER_KEY'], app.config['CONSUMER_SECRET'], callback)
 	auth.request_token = request_token
 	verifier = request.args.get('oauth_verifier')
 	auth.get_access_token(verifier)
