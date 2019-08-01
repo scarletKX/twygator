@@ -17,6 +17,7 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-3. Open Command Prompt and navigate to the location of the folder.
-4. enter "flask run".
-5. Open your browser and enter the local url assigned.
+3. In config.py, replace YOUR TWITTER API COMSUMER KEY and YOUR TWITTER API CONSUMER SECRET with your consumer key and secret.
+4. Open Command Prompt and navigate to the location of the folder.
+5. enter "flask run".
+6. Open your browser and enter the local url assigned.
