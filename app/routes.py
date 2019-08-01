@@ -27,7 +27,7 @@ def home():
 
 @app.route('/auth')
 def authen():
-	auth = tweepy.OAuthHandler(consumer_key, consumer_secret, callback)
+	auth = tweepy.OAuthHandler(app.config['CONSUMER_KEY'], app.config['CONSUMER_SECRET'], callback)
 	#url = auth.get_authorization_url(signin_with_twitter=True)
 	url = auth.get_authorization_url()
 	session['request_token'] = auth.request_token
@@ -56,7 +56,7 @@ def logout():
 @app.route('/mytwygator')
 def mytwygator_option():
 	access_token, access_token_secret = session.get('token')
-	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+	auth = tweepy.OAuthHandler(app.config['CONSUMER_KEY'], app.config['CONSUMER_SECRET'])
 	auth.set_access_token(access_token, access_token_secret)
 	session['logged_in'] = True	
 	api = tweepy.API(auth, wait_on_rate_limit=True)
@@ -66,7 +66,7 @@ def mytwygator_option():
 @app.route('/mytwygator/<list_name>_<list_id>')
 def mytwygator_view(list_name='all-friends', list_id=-1):
 	access_token, access_token_secret = session.get('token')
-	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+	auth = tweepy.OAuthHandler(app.config['CONSUMER_KEY'], app.config['CONSUMER_SECRET'])
 	auth.set_access_token(access_token, access_token_secret)
 	session['logged_in'] = True	
 	api = tweepy.API(auth, wait_on_rate_limit=True)
