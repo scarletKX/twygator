@@ -5,15 +5,15 @@ Twygator aggregates 5 most recent statuses from each of your friends and present
 
 ### Prerequisites
 Since I stored my Twitter API key in my config.py file, you need to create yours to make twygator work. More on this later in the detailed instruction.
-'''
+```
 create a config.py the same level as README.md
-'''
+```
 
 To use twygator locally:
 
 1. Download all files however you want into your computer.
 2. In the outmost level, same as README.md, create a "config.py" file, and Copy the following:
-'''
+```
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -24,7 +24,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-'''
+```
 3. In config.py, replace YOUR TWITTER API COMSUMER KEY and YOUR TWITTER API CONSUMER SECRET with your consumer key and secret.
 4. Open Command Prompt and navigate to the location of the folder.
 5. enter "flask run".
