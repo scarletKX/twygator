@@ -65,10 +65,7 @@ def mytwygator_view(list_name='all-friends', list_id=-1):
 	session['name'] = me.name
 	session['user_id'] = me.id
 	
-	print(type(list_id))	
 	list_id = int(list_id)
-	print(list_name+':', list_id)
-	print(type(list_id))
 	populate_db(api, list_id)
 
 	#construct list of friends and their timelines for template rendering

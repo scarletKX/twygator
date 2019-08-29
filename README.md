@@ -23,6 +23,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config(object):
     CONSUMER_KEY = os.environ.get('CONSUMER_KEY') or 'YOUR TWITTER API CONSUMER KEY'
     CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET') or 'YOUR TWITTER API CONSUMER SECRET'
+    SECRET_KEY = os.environ.get('CONSUMER_SECRET') or 'YOUR OWN SECRET KEY FOR THE APP'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
