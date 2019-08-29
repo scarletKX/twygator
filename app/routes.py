@@ -10,16 +10,8 @@ from app.models import User, Friendship, Timeline_Member
 from app.populate import populate_db
 from app.util import get_friend_timeline
 
-
-#Connect to Database and create database session
-# engine = create_engine('sqlite:///twitter_user.db', convert_unicode=True)
-# Base.metadata.bind = engine
-
-# DBSession = sessionmaker(bind=engine)
-# db_session = DBSession()
-
-
 callback = 'http://127.0.0.1:5000/callback'
+
 
 @app.route('/')
 def home():
@@ -28,7 +20,6 @@ def home():
 @app.route('/auth')
 def authen():
 	auth = tweepy.OAuthHandler(app.config['CONSUMER_KEY'], app.config['CONSUMER_SECRET'], callback)
-	#url = auth.get_authorization_url(signin_with_twitter=True)
 	url = auth.get_authorization_url()
 	session['request_token'] = auth.request_token
 	return redirect(url)
